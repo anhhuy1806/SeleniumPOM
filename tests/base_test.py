@@ -1,10 +1,15 @@
+import pytest
 from selenium import webdriver
+from utilities.config_reader import ConfigReader
 
 class BaseTest:
-    def setup_method(self):
-        self.driver = webdriver.Chrome()
-        self.driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-        self.driver.maximize_window()
+    driver = None
 
-    def teardown_method(self):
-        self.driver.quit()
+    @pytest.fixture(autouse=True)
+    def setup(self):
+        config = ConfigReader.get_config()
+        BaseTest.driver = webdriver.Chrome()
+        BaseTest.driver.get(config["url"])
+        BaseTest.driver.maximize_window()
+        yield
+        BaseTest.driver.quit()
