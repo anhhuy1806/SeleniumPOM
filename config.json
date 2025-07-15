@@ -1,5 +1,6 @@
 {
     "base_url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    "login_api": "https://your-api-endpoint.com/api/login",
     "credentials": {
         "username": "Admin",
         "password": "admin123"

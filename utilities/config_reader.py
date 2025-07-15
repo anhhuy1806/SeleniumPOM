@@ -24,3 +24,7 @@ class ConfigReader:
     @staticmethod
     def get_password():
         return ConfigReader.read_json()['credentials']['password']
+    
+    @staticmethod
+    def get_login_api():
+        return ConfigReader.read_json()["login_api"]
