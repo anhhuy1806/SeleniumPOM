@@ -29,7 +29,4 @@ class LoginPage(BasePage):
         self.click_login()
         time.sleep(10)  
         
-    def wait_for_login_page(self):
-        WebDriverWait(self.driver, 10).until(
-        EC.presence_of_element_located(self.username_input)
-    )
+   

@@ -17,5 +17,5 @@ class TestLogin(BaseTest):
     @allure.title("Login with invalid credentials")
     def test_login_invalid(self):
         login_page = LoginPage(self.driver)
-        login_page.login("invalidUser", "wrongPass")
+        login_page.login("invalidUser", "wrongPass") #Nhập sai name
         assert "dashboard" in self.driver.current_url.lower()

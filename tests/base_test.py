@@ -18,9 +18,9 @@ class BaseTest:
         yield
         
         # Screenshot sau mỗi test (pass hoặc fail)
-        test_name = request.node.name
-        filename = f"{test_name}.png"
-        filepath = os.path.join("screenshots", filename)
-        self.driver.save_screenshot(filepath)
-        allure.attach.file(filepath, name=test_name, attachment_type=allure.attachment_type.PNG)
+        test_name = request.node.name #lấy tên từ pytest
+        filename = f"{test_name}.png" #tên_test.png
+        filepath = os.path.join("screenshots", filename) #bỏ vào file screenshot
+        self.driver.save_screenshot(filepath) #command screenshot
+        allure.attach.file(filepath, name=test_name, attachment_type=allure.attachment_type.PNG) #add vào allure-result
         self.driver.quit()

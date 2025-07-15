@@ -12,7 +12,7 @@ class TestAPILogin:
 
     def test_login_success(self):
         res = self.api.login(self.username, self.password)
-        assert res.status_code == 200
+        assert res.status_code == 200 #success
 
     def test_access_dashboard(self):
         self.api.login(self.username, self.password)
