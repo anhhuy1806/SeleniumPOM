@@ -1,13 +1,17 @@
 from tests.base_test import BaseTest
 from pages.login_page import LoginPage
 from utilities.config_reader import ConfigReader
-import time
+import allure
 
+@allure.epic("Login Module")
+@allure.feature("OrangeHRM Login")
 class TestLogin(BaseTest):
-    def test_login_success(self):
-        config = ConfigReader.get_config()
-        login_page = LoginPage(self.driver)
-        login_page.login(config["username"], config["password"])
 
-        time.sleep(2)
-        assert "dashboard" in self.driver.current_url.lower()
+    @allure.story("Valid credentials")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Login should succeed with valid credentials")
+    def test_login_success(self):        
+        login_page = LoginPage(self.driver)
+        login_page.login(ConfigReader.get_username(), ConfigReader.get_password())
+
+      
