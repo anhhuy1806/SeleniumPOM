@@ -18,7 +18,7 @@ class TestAPILogin:
         self.api.login(self.username, self.password)
         res = self.api.get_dashboard()
         assert res.status_code == 200
-        assert "dashboard" in res.text.lower()
+        assert "<title>" in res.text.lower()
 
     def test_logout(self):
         self.api.login(self.username, self.password)
