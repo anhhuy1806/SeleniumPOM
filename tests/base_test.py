@@ -19,4 +19,13 @@ class BaseTest:
         self.driver.get(ConfigReader.get_base_url())
         request.cls.driver = self.driver
         yield
+
+        #Chụp hình khi fail
+        if hasattr(request.node, "rep_call") and request.node.rep_call.failed:
+            allure.attach(
+                self.driver.get_screenshot_as_png(),
+                name=f"failed_{request.node.name}",
+                attachment_type=allure.attachment_type.PNG
+            )
+
         self.driver.quit()
